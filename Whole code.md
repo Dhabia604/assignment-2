@@ -2,16 +2,19 @@
 
 from enum import Enum
 
+# Define Loyalty Status options
 class LoyaltyStatus(Enum):
     NONE = "None"
     BRONZE = "Bronze"
     SILVER = "Silver"
     GOLD = "Gold"
 
+# Define Payment Method options
 class PaymentMethod(Enum):
     CREDIT_CARD = "Credit Card"
     BANK_TRANSFER = "Bank Transfer"
 
+# Hotel class to manage hotel information
 class Hotel:
     def __init__(self, hotel_name, location, total_rooms, available_rooms):
         self._hotel_name = hotel_name
@@ -29,6 +32,7 @@ class Hotel:
     def set_available_rooms(self, available_rooms): self._available_rooms = available_rooms
     def display_hotel_info(self): return f"Hotel: {self._hotel_name}, Location: {self._location}, Total Rooms: {self._total_rooms}, Available Rooms: {self._available_rooms}"
 
+# Review class to manage customer reviews
 class Review:
     def __init__(self, review_id, rating, feedback_comment, review_date):
         self._review_id = review_id
@@ -46,6 +50,7 @@ class Review:
     def set_review_date(self, review_date): self._review_date = review_date
     def display_feedback_and_reviews_info(self): return f"Review ID: {self._review_id}, Rating: {self._rating}, Comment: {self._feedback_comment}, Date: {self._review_date}"
 
+# Room class to manage room details
 class Room:
     def __init__(self, room_number, room_type, price, availability_status, amenities):
         self._room_number = room_number
@@ -66,6 +71,7 @@ class Room:
     def set_amenities(self, amenities): self._amenities = amenities
     def display_room_info(self): return f"Room Number: {self._room_number}, Type: {self._room_type}, Price: {self._price}, Availability: {self._availability_status}, Amenities: {self._amenities}"
 
+# DoubleRoom class inheriting from Room
 class DoubleRoom(Room):
     def __init__(self, room_number, price, availability_status, amenities, has_king_size_bed, has_balcony):
         super().__init__(room_number, "Double", price, availability_status, amenities)
@@ -78,6 +84,7 @@ class DoubleRoom(Room):
     def set_has_balcony(self, has_balcony): self._has_balcony = has_balcony
     def display_double_room_info(self): return f"{super().display_room_info()}, King Size Bed: {self._has_king_size_bed}, Balcony: {self._has_balcony}"
 
+# SingleRoom class inheriting from Room
 class SingleRoom(Room):
     def __init__(self, room_number, price, availability_status, amenities, has_work_desk, has_mini_fridge):
         super().__init__(room_number, "Single", price, availability_status, amenities)
@@ -90,6 +97,7 @@ class SingleRoom(Room):
     def set_has_mini_fridge(self, has_mini_fridge): self._has_mini_fridge = has_mini_fridge
     def display_single_room_info(self): return f"{super().display_room_info()}, Work Desk: {self._has_work_desk}, Mini Fridge: {self._has_mini_fridge}"
 
+# Guest class to manage guest information
 class Guest:
     def __init__(self, guest_id, guest_name, contact_information, loyalty_status, reservations=None):
         if reservations is None:
@@ -113,6 +121,7 @@ class Guest:
     def add_reservation(self, booking): self._reservations.append(booking)
     def display_guest_info(self): return f"Guest ID: {self._guest_id}, Name: {self._guest_name}, Contact: {self._contact_information}, Loyalty: {self._loyalty_status.value}"
 
+# Booking class to manage booking details
 class Booking:
     def __init__(self, guest, rooms, check_in, check_out, status, payment):
         self._guest = guest
@@ -138,6 +147,7 @@ class Booking:
     def cancel_booking(self): self._status = "Cancelled"
     def display_booking(self): return f"Booking for {self._guest.get_guest_name()}, Rooms: {[room.get_room_number() for room in self._rooms]}, Check-in: {self._check_in}, Check-out: {self._check_out}, Status: {self._status}"
 
+# LoyaltyProgram class to manage loyalty program details
 class LoyaltyProgram:
     def __init__(self, program_id, points_balance, available_rewards, points_expiration, guest):
         self._program_id = program_id
@@ -160,6 +170,7 @@ class LoyaltyProgram:
     def redeem_rewards(self, reward): return f"Rewards redeemed: {reward}"
     def display_loyalty_awards_info(self): return f"Program ID: {self._program_id}, Points: {self._points_balance}, Rewards: {self._available_rewards}, Expiration: {self._points_expiration}, Guest: {self._guest.get_guest_name()}"
 
+# Invoice class to manage invoice details
 class Invoice:
     def __init__(self, invoice_id, booking, total_amount, vat, payment_status):
         self._invoice_id = invoice_id
@@ -181,6 +192,7 @@ class Invoice:
     def generate_invoice_details(self): return f"Total: {self._total_amount + self._vat}"
     def display_invoice_info(self): return f"Invoice ID: {self._invoice_id}, Booking: {self._booking.display_booking()}, Total: {self.generate_invoice_details()}, Status: {self._payment_status}"
 
+# Payment class to manage payment details
 class Payment:
     def __init__(self, booking, payment_method, amount_paid, invoice_number):
         self._booking = booking
@@ -199,6 +211,7 @@ class Payment:
     def process_payment(self): return True
     def display_payment(self): return f"Payment Method: {self._payment_method.value}, Amount: {self._amount_paid}, Invoice: {self._invoice_number}"
 
+# BankTransferPayment class inheriting from Payment
 class BankTransferPayment(Payment):
     def __init__(self, booking, amount_paid, invoice_number, bank_name, account_number):
         super().__init__(booking, PaymentMethod.BANK_TRANSFER, amount_paid, invoice_number)
@@ -212,6 +225,7 @@ class BankTransferPayment(Payment):
     def validate_payment(self): return True
     def display_bank_transfer_payment(self): return f"{super().display_payment()}, Bank: {self._bank_name}, Account: {self._account_number}"
 
+# CreditCardPayment class inheriting from Payment
 class CreditCardPayment(Payment):
     def __init__(self, booking, amount_paid, invoice_number, card_number, expiry_date):
         super().__init__(booking, PaymentMethod.CREDIT_CARD, amount_paid, invoice_number)
