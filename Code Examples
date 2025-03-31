@@ -1,0 +1,69 @@
+===== Hotel Management System - Staff Login =====
+Enter your staff ID: Dhabia
+Enter your password: Dhabia604
+Login successful. Welcome, Staff!
+
+
+==================== Test 1: Guest Account Creation ====================
+Guest ID: G001, Name: Afrah, Contact: Afrah@gmail.com, Loyalty: Gold
+Guest ID: G002, Name: Aysha, Contact: Aysha@gmail.com, Loyalty: Silver
+Guest ID: G003, Name: Shamma, Contact: Shamma@gmail.com, Loyalty: Bronze
+Guest ID: G004, Name: Haya, Contact: Haya@gmail.com, Loyalty: None
+
+==================== Test 2: Searching for Available Rooms ====================
+
+Available Rooms Set 1:
+Room Number: 201, Type: Double, Price: 350.0, Availability: Available, Amenities: ['WiFi', 'TV']
+
+Available Rooms Set 2:
+Room Number: 203, Type: Double, Price: 400.0, Availability: Available, Amenities: ['WiFi', 'Balcony']
+Room Number: 204, Type: Single, Price: 250.0, Availability: Available, Amenities: ['Mini Fridge']
+
+==================== Test 3: Making a Room Reservation ====================
+Booking for Afrah, Rooms: [101], Check-in: 2025-04-01, Check-out: 2025-04-05, Status: Pending
+Booking for Aysha, Rooms: [102], Check-in: 2025-04-10, Check-out: 2025-04-12, Status: Pending
+Booking for Shamma, Rooms: [103], Check-in: 2025-05-01, Check-out: 2025-05-03, Status: Pending
+Booking for Haya, Rooms: [104], Check-in: 2025-05-05, Check-out: 2025-05-07, Status: Pending
+
+==================== Test 4: Booking Confirmation Notification ====================
+Booking 1 Status: Confirmed
+Booking 2 Status: Confirmed
+Booking 3 Status: Confirmed
+Booking 4 Status: Confirmed
+
+==================== Test 5: Invoice Generation for a Booking ====================
+Invoice ID: INV301, Booking: Booking for Afrah, Rooms: [101], Check-in: 2025-04-01, Check-out: 2025-04-05, Status: Confirmed, Total: Total: 1470.0, Status: Paid
+Invoice ID: INV302, Booking: Booking for Aysha, Rooms: [102], Check-in: 2025-04-10, Check-out: 2025-04-12, Status: Confirmed, Total: Total: 420.0, Status: Paid
+Invoice ID: INV303, Booking: Booking for Shamma, Rooms: [103], Check-in: 2025-05-01, Check-out: 2025-05-03, Status: Confirmed, Total: Total: 630.0, Status: Paid
+Invoice ID: INV304, Booking: Booking for Haya, Rooms: [104], Check-in: 2025-05-05, Check-out: 2025-05-07, Status: Confirmed, Total: Total: 1050.0, Status: Paid
+
+==================== Test 6: Processing Different Payment Methods ====================
+Payment Method: Credit Card, Amount: 1400.0, Invoice: INV301, Card: 1234-5678-9012-3456, Expiry: 12/25
+Payment Method: Bank Transfer, Amount: 400.0, Invoice: INV302, Bank: Abu Dhabi Bank, Account: 123456789
+Payment Method: Credit Card, Amount: 600.0, Invoice: INV303, Card: 5678-9012-3456-1234, Expiry: 01/26
+Payment Method: Bank Transfer, Amount: 1000.0, Invoice: INV304, Bank: Abu Dhabi Bank, Account: 9876543210
+
+==================== Test 7: Displaying Reservation History ====================
+Reservations for Afrah:
+Booking for Afrah, Rooms: [101], Check-in: 2025-04-01, Check-out: 2025-04-05, Status: Confirmed
+Reservations for Aysha:
+Booking for Aysha, Rooms: [102], Check-in: 2025-04-10, Check-out: 2025-04-12, Status: Confirmed
+Reservations for Shamma:
+Booking for Shamma, Rooms: [103], Check-in: 2025-05-01, Check-out: 2025-05-03, Status: Confirmed
+Reservations for Haya:
+Booking for Haya, Rooms: [104], Check-in: 2025-05-05, Check-out: 2025-05-07, Status: Confirmed
+
+==================== Test 8: Cancellation of a Reservation ====================
+[Before Cancellation] Booking 2:
+Booking for Aysha, Rooms: [102], Check-in: 2025-04-10, Check-out: 2025-04-12, Status: Confirmed
+
+[After Cancellation] Booking 2:
+Booking for Aysha, Rooms: [102], Check-in: 2025-04-10, Check-out: 2025-04-12, Status: Cancelled
+
+[Before Cancellation] Booking 4:
+Booking for Haya, Rooms: [104], Check-in: 2025-05-05, Check-out: 2025-05-07, Status: Confirmed
+
+[After Cancellation] Booking 4:
+Booking for Haya, Rooms: [104], Check-in: 2025-05-05, Check-out: 2025-05-07, Status: Cancelled
+
+=== Code Execution Successful ===
